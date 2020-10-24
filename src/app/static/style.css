@@ -1,0 +1,48 @@
+html {
+    margin: 1em;
+    background: rgb(240 248 255 / 0.9);
+}
+
+body {
+    background: inherit;
+}
+
+h1 {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+#results {
+    margin: 0.5em;
+    padding: 1em;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.series-details {
+    font-size: 1.2em;
+}
+
+.series-property {
+    display: flex;
+}
+
+.result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.buttons {
+    margin: 0.5em;
+}
+
+.type {
+    margin-top: -0.3em;
+}

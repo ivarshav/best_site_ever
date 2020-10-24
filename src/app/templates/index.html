@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Best Site Ever</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" href="static/batman.jpg">
+    
+</head>
+<body>
+<h1>Search Your Show</h1>
+
+<div id="search">
+    <form id="search-form" class="row" action="/" method="post">
+        <div class="col-auto">
+            <label for="title" class="visually-hidden">Show Name</label>
+            <input class="form-control" type="text" id="title" name="title" placeholder="Show Name"
+                   tabindex=0 autofocus required>
+        </div>
+        <div class="col-auto">
+            <label for="year_input" class="visually-hidden">Year</label>
+            <input class="form-control" type="number" id="year_input" name="year_input" placeholder="Year">
+        </div>
+        <div class="col-auto type">
+            <label>Show Type</label>
+            <div class="btn-group" data-toggle="buttons">
+                <label for="movie" title="movie" class="btn btn-sm btn-primary buttons">
+                    <input type="radio" id="movie" name="show_type" value="movie" checked>
+                    <span> Movie </span>
+                </label>
+                <label for="series" title="series" class="btn btn-sm btn-primary buttons">
+                    <input type="radio" id="series" name="show_type" value="series">
+                    <span> Series </span>
+                </label>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-success">Search</button>
+        </div>
+    </form>
+    {% if results %}
+    <h2>Search Results</h2>
+    <div id="results">
+        {% for item in results %}
+        <div class="result" data-result-id="1">
+            <div class="series-details">
+                <div class="series-name series-property">{{ item["Title"] | title }}</div>
+                <div class="series-year series-property">{{ item["Year"] }}</div>
+                <div class="series-year series-property"><a href="https://www.imdb.com/title/{{ item['imdbID'] }}/">IMDb
+                    Link</a></div>
+                {% if item["Poster"] != 'N/A' %}
+                <div class="series-img series-property"><img src="{{ item['Poster'] }}"
+                                                             alt="{{ item['Title'] | title }}">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
