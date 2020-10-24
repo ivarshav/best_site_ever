@@ -8,6 +8,7 @@ from requests import ConnectionError
 app = Flask(__name__)
 
 HOST = '0.0.0.0'
+PORT = 5000
 URL = "http://www.omdbapi.com/?apikey=" + os.getenv('MY_API_KEY', '')
 
 
@@ -32,12 +33,12 @@ def index():
         show_type = request.form.get('show_type')
         res = get_results(title, year, show_type)
         return render_template(
-            'index.html',
+            'index.j2',
             results=res
         )
     if request.method == 'GET':
-        return render_template('index.html')
+        return render_template('index.j2')
 
 
 if __name__ == "__main__":
-    app.run(host=HOST, debug=True)
+    app.run(host=HOST, debug=True, threaded=True, port=PORT)
