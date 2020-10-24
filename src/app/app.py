@@ -7,8 +7,6 @@ from requests import ConnectionError
 
 app = Flask(__name__)
 
-HOST = '0.0.0.0'
-PORT = 5000
 URL = "http://www.omdbapi.com/?apikey=" + os.getenv('MY_API_KEY', '')
 
 
@@ -41,4 +39,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host=HOST, debug=True, threaded=True, port=PORT)
+    app.run(threaded=True, port=5000)
