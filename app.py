@@ -1,8 +1,9 @@
 import os
 
+from flask import Flask, render_template, request
+
 import requests
-from flask import Flask, request
-from flask import render_template
+
 from requests import ConnectionError
 
 app = Flask(__name__)
